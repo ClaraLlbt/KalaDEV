@@ -1,0 +1,108 @@
+@import './base.css';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+body {
+  justify-content: center;
+}
+#app {
+  font-weight: normal;
+  font-family: 'Noto Serif', serif;
+  width: 100%;
+}
+a,
+.nav-link {
+  text-decoration: none;
+  color: black;
+}
+ul {
+  list-style: none;
+}
+
+i::before,
+.icon i::before {
+  background: linear-gradient(57deg, #ab9c7c, #cfc09f, #ffecb3, #cfc09f);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+i,
+.icon i {
+  color: tan;
+}
+
+.hex {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 610px;
+  width: 44%;
+  padding: 0;
+  overflow: hidden; /* Masque ce qui dépasse de la forme hexagonale */
+}
+.hex::before {
+  font-family: bootstrap-icons !important;
+  content: '\f41b';
+  font-size: 600px;
+  position: relative;
+}
+
+.hex::before {
+  color: transparent; /* Masque l'icône initiale */
+}
+
+.hex::after {
+  font-family: bootstrap-icons !important;
+  content: '\f41b';
+  font-size: 600px;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1; /* Pour placer l'icône sous l'icône principale */
+  background: linear-gradient(132deg, #bab9c4 0%, #d6d6d6 52%, #bab9c4 100%);
+  -webkit-background-clip: text; /* Pour appliquer le dégradé à l'intérieur de l'icône */
+  color: transparent; /* Masque l'icône */
+  opacity: 30%;
+  overflow: hidden; /* Masque ce qui dépasse de la forme hexagonale */
+}
+
+.hex-slider {
+  width: 100%;
+  height: 250px;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(132deg, #bab9c4 0%, #d6d6d6 52%, #bab9c4 100%);
+}
+
+.hex-slider:before,
+.hex-slider:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.hex-slider:before {
+  top: -50%;
+  left: 0;
+  z-index: -1;
+  background: linear-gradient(132deg, #bab9c4 18%, #d6d6d6 75%, #bab9c4 100%);
+}
+
+.hex-slider:after {
+  bottom: -50%;
+  z-index: -1;
+  background: linear-gradient(132deg, #bab9c4 0%, #d6d6d6 30%, #bab9c4 83%);
+  left: 0;
+}
+
+@media (hover: hover) {
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+}
