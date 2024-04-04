@@ -3,11 +3,11 @@ import Banner from '@/components/Banner.vue'
 import Navbar from '@/components/Navbar.vue'
 import TurnKeySolution from '../components/TurnkeySolution.vue'
 import Contact from '@/components/Contact.vue'
-import References from '../components/References.vue'
+import Solutions from '@/components/Solutions.vue'
 
 export default {
   name: 'Home',
-  components: { Banner, Navbar, TurnKeySolution, Contact, References },
+  components: { Banner, Navbar, TurnKeySolution, Contact, Solutions },
   mounted() {
     const hexElements = document.querySelectorAll('.hex')
     const hasAnimation = document.querySelectorAll('.has-animation')
@@ -37,33 +37,41 @@ export default {
 
   <div class="container-fluid banner-ctr">
     <div class="row titles">
-      <div class="col-5 main-title has-animation" style="text-align: end">
-        <h1>Boostez votre présence en ligne avec Kala Develops</h1>
-        <p>Services de développement web</p>
-        <div class="networks-link">
-          <ul>
-            <li>
-              <a href="https://linkedin.com/in/cllbt"><i class="bi bi-linkedin"></i></a>
-            </li>
-            <li>
-              <a href="https://www.facebook.com/profile.php?id=100069904156077"
-                ><i class="bi bi-facebook"></i
-              ></a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/kala__dev/"><i class="bi bi-instagram"></i></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-3 hex">
-        <div class="img"></div>
+      <div class="col-10 col-sm-6 col-xl-4 col-xxl-3 main-title has-animation hex-content">
+        <div class="hex hex-intro"></div>
+        <span>
+          <h1>Boostez votre présence en ligne avec Kala Develops</h1>
+          <p>Services de développement web</p>
+          <p>
+            Ma mission est de vous aider à prospérer dans une ruche numérique en constante
+            évolution.
+          </p>
+          <div class="networks-link">
+            <ul>
+              <li>
+                <a href="https://linkedin.com/in/cllbt"><i class="bi bi-linkedin"></i></a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/profile.php?id=100069904156077"
+                  ><i class="bi bi-facebook"></i
+                ></a>
+              </li>
+              <!-- <li>
+                <a href="https://www.instagram.com/kala__dev/"><i class="bi bi-instagram"></i></a>
+              </li> -->
+            </ul>
+          </div>
+        </span>
       </div>
     </div>
-    <div class="row turnkey-solution">
-      <div class="col-4 hex intro">
+    <div class="row solutions">
+      <div class="col-6 col-sm-6 col-xl-4 col-xxl-3 hex-content turnkey">
+        <div class="hex"></div>
         <span>
-          <h2>Solution clé en main</h2>
+          <img
+            src="data:image/png;base64,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"
+          />
+          <h3>Solution "Clé en main"</h3>
           <p>
             Des sites web clés en main, prêts à briller en un clic ! Découvrez notre sélection de
             designs élégants et professionnels, conçus pour vous faire économiser du temps et de
@@ -72,45 +80,26 @@ export default {
           <button class="btn"><a href="#turnkey-solution">En Savoir plus</a></button>
         </span>
       </div>
-      <div class="col-4 hex preview">
-        <div class="slider">
-          <span class="slide-track">
-            <div class="slide">
-              <img src="../assets/images/ORINOCO.png" alt="" />
-            </div>
-            <div class="slide">
-              <img src="../assets/images/FABRIQUE.png" alt="" />
-            </div>
-            <div class="slide"></div>
-            <img src="../assets/images/GROUPOMANIA.png" alt="" />
-            <div class="slide">
-              <img src="../assets/images/OhMyFood.png" alt="" />
-            </div>
-          </span>
-        </div>
-      </div>
-    </div>
-    <div class="row bespoke-solution">
-      <div class="col-4 hex intro">
+      <div class="col-6 col-sm-6 col-xl-4 col-xxl-3 hex-content bespoke">
+        <div class="hex"></div>
         <span>
-          <h2>Solution sur-mesure</h2>
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB3klEQVR4nOWYQWrEMAxF/yVa6BV6/+WsEgID3bWLHqNzA5VCKKGNEztjfX1NDNqYZDJ+SE9KAGAC8AbgGSddNsdHMgjT4r8fjRF/Nj4BvCDHsk6BZQZkyoTfAxy89h+AJwDviTKhOwAkg+ACIBMENwCYHaDuhKLVN65d3bMCSXUIawCGnWtX92wjlZTLwbUEMkDoDsA26kixHNwADIUfUYNAKwFVCO5dQB0CpQsoi5EqQcVMoEtQDUKIBJXKgQZgqvhkFpEJtC5glQdjQ+jeBaxA0UQh0CRoiwMpQaA5wOZokR1DjHQAEIMQAqA1xT3LoXsXsB0JQgyCWxcYKm5WgBBWAssV6QQJAJEQZABEQXAbhMaDD2I7wa0LDBU3K0Do3gVKqwUAsxykHBABQRoAA4KcBNlOcAMw3PEgJoTuXaC07gXgBUG2C7CcIC9BbwgpJOhZDjcAX0ggQS8Ir3OkKoGoFyhJANFjswSAyLE5TIIRb5FyElQYm2VKgFEOaQB4QUgFgDU2S0nQ2wkpJMgem6VLgDE2NwNQiWsnYNUARoFDL+OyA6AWQjWArKv6e4I9KIBqMdoDA6gSozUAmFbmBPW9XSdYA4DNgUJ0b9cJdhIARQh24rj+AFDr88y4fAOZ8WI7aIVaywAAAABJRU5ErkJggg=="
+          />
+          <h3>Solution "Sur-mesure"</h3>
           <ul class="list">
             <li>Conception sur-mesure</li>
             <li>Expertise Fullstack</li>
             <li>Optimisation mobile</li>
             <li>SEO</li>
           </ul>
-          <button class="btn"><a href="#turnkey-solution">En Savoir plus</a></button>
+          <button class="btn"><a href="#contact">Demandez un devis !</a></button>
         </span>
-      </div>
-      <div class="col-4 hex preview">
-        <span class="round-border"> </span>
       </div>
     </div>
   </div>
 
-  <TurnKeySolution />
-  <References />
+  <Solutions />
 
   <Contact />
   <footer id="footer" class="container-fluid">
@@ -122,7 +111,7 @@ export default {
   </footer>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .bckgd-top {
   position: absolute;
   transform: rotate(180deg);
@@ -136,9 +125,12 @@ export default {
   transform: translateY(300px);
   opacity: 0;
 }
+.hex-intro {
+  background: #f2f3f5 !important;
+}
 .hex.show {
   transform: translateY(0);
-  opacity: 1;
+  opacity: 90%;
   transition: transform 0.5s ease-in-out, opacity 0.3s ease-in;
 }
 .has-animation {
@@ -166,141 +158,89 @@ export default {
   flex-direction: column;
   margin-top: 150px;
   .titles {
+    background: url('../assets/images/BANNER.png');
+    background-size: cover;
     justify-content: center;
-    .main-title {
-      align-self: center;
-    }
-    .networks-link {
-      // opacity: 0;
-      // &.animate {
-      //   animation: textHidden 2s 1.5s ease forwards;
-      // }
-      ul {
-        padding: 0;
-        list-style: none;
-        display: inline-flex;
-        width: 30%;
-        justify-content: space-between;
-        li {
-          margin: 0 5px;
-          font-size: xx-large;
-        }
-      }
-    }
-    .hex {
-      .img {
-        background: url(/src/assets/images/medias.png);
-        height: 400px;
+    .hex-content {
+      span {
         position: absolute;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        top: 0;
+        top: 20px;
         left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
-      }
-    }
-  }
-  .turnkey-solution {
-    align-self: center;
-    justify-content: left;
-    position: relative;
-    top: -152px;
-    right: 49px;
-    .intro span {
-      position: absolute;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 50px;
-      text-align: center;
-      font-size: 21px;
-      align-items: center;
-      .btn {
-        background: linear-gradient(57deg, #ab9c7c, #cfc09f, #ffecb3, #cfc09f);
-        width: max-content;
-        a {
-          color: white;
-        }
-      }
-    }
-    .preview {
-      position: relative;
-      .slider {
-        position: absolute;
-        top: 0;
+        padding: 10px;
+        letter-spacing: -2px;
+        text-align: center;
         width: 100%;
         height: 100%;
-        clip-path: polygon(50% 0%, 147% 50%, 50% 100%, -48% 50%);
-
-        .slide-track {
-          flex-direction: column;
-          justify-content: center;
-          padding: 30px;
-          animation: scroll 40s linear infinite;
-          display: flex;
-          height: calc(100% * 4);
-        }
-
-        .slide {
-          height: max-content;
-          width: 100%;
-          padding-bottom: 5px;
-          img {
-            width: 100%;
-            z-index: -1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .networks-link {
+          // opacity: 0;
+          // &.animate {
+          //   animation: textHidden 2s 1.5s ease forwards;
+          // }
+          ul {
+            padding: 0;
+            list-style: none;
+            display: inline-flex;
+            width: 30%;
+            justify-content: center;
+            li {
+              margin: 0 5px;
+              font-size: 40px;
+              i::before {
+                padding: 5px;
+              }
+            }
           }
         }
       }
-      span {
-        text-align: end;
-        width: 100%;
-        height: 100%;
-      }
     }
   }
-  .bespoke-solution {
-    align-self: center;
+  .solutions {
     justify-content: center;
     position: relative;
-    top: -305px;
-    right: -142px;
-    .intro span {
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      align-items: center;
-      ul {
-        font-size: x-large;
-        padding: 0;
-      }
-      .btn {
-        background: linear-gradient(57deg, #ab9c7c, #cfc09f, #ffecb3, #cfc09f);
-        width: max-content;
-        a {
-          color: white;
+    top: -140px;
+    .turnkey,
+    .bespoke {
+      span {
+        position: absolute;
+        top: 0;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 90%;
+        width: 100%;
+        flex-direction: column;
+
+        left: 0;
+        i {
+          padding: 10px;
+          font-size: 60px;
+        }
+        .btn {
+          background: linear-gradient(57deg, #ab9c7c, #cfc09f, #ffecb3, #cfc09f);
+          width: max-content;
+          a {
+            color: white;
+          }
         }
       }
     }
-    .preview span {
-      position: absolute;
-      top: 0px;
-      width: 100%;
-      height: 100%;
-      clip-path: polygon(50% 0%, 147% 50%, 50% 100%, -47% 50%);
-      padding: 4px;
-      border-radius: 20px;
-      border: 6px solid #fff;
-      background: url('../assets/images/DITO2.png');
-      background-position: top;
-      background-size: cover;
+    .turnkey {
+      span p {
+        width: 80%;
+        text-align: center;
+        font-size: 18px;
+      }
+    }
+    .bespoke {
+      span ul {
+        padding: 10px 0;
+        li {
+          font-size: 18px;
+        }
+      }
     }
   }
 }
@@ -315,16 +255,6 @@ footer {
   }
   100% {
     opacity: 1;
-  }
-}
-
-// Animation
-@keyframes scroll {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(calc(-250px * 7));
   }
 }
 </style>

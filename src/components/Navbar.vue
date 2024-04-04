@@ -51,13 +51,24 @@ export default {
       <img src="../assets/kaladev-logo.svg" width="150" height="150" alt="" />
     </a>
     <ul class="nav justify-content-center">
-      <li class="nav-item">
+      <li class="nav-item btn-effect">
         <a class="nav-link" aria-current="page" href="#">HOME</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#turnkey-solution">WEBSITES</a>
+      <li class="nav-item btn-group btn-effect" role="group">
+        <button
+          type="button"
+          class="btn dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          SERVICES
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#turnkey-ctr">Solution "Clé en main"</a></li>
+          <li><a class="dropdown-item" href="#bespoke-ctr">Solution Sur-mesure</a></li>
+        </ul>
       </li>
-      <li class="nav-item">
+      <li class="nav-item btn-effect">
         <a class="nav-link" href="#contact">CONTACT</a>
       </li>
     </ul>
@@ -105,12 +116,31 @@ export default {
     margin: auto;
     .nav-item {
       margin: 0.5em 1em;
-    }
-    .item-dark {
-      align-self: center;
-      margin: 0;
-      .btn i {
+      .btn.dropdown-toggle {
         font-size: x-large;
+        &:focus,
+        &:active {
+          border: none;
+          box-shadow: none;
+        }
+      }
+      .btn-check:checked + .btn,
+      .btn.active,
+      .btn.show,
+      .btn:first-child:active,
+      :not(.btn-check) + .btn:active {
+        border: none;
+      }
+      ul.dropdown-menu {
+        background: none;
+        backdrop-filter: blur(100px);
+        border-radius: 0;
+        border: 0;
+        top: 66px;
+      }
+      a.dropdown-item.active,
+      a.dropdown-item:active {
+        background-color: #f2f3f5;
       }
     }
   }
@@ -141,8 +171,6 @@ button {
 .nav li a:hover {
   color: black;
 }
-.nav li::before,
-.nav li::after,
 .btn-effect::before,
 .btn-effect::after {
   content: '';
@@ -152,7 +180,6 @@ button {
   transition: all 0.35s ease;
   opacity: 0;
 }
-.nav li::before,
 .btn-effect::before {
   content: '';
   right: 0;
@@ -161,7 +188,6 @@ button {
   border-right: 2px solid black;
   transform: translate(-100%, 50%);
 }
-.nav li:after,
 .btn-effect::after {
   content: '';
   left: 0;
@@ -216,9 +242,17 @@ button {
       content: none;
     }
   }
-  .navbar-mobile.hiden {
+  .navbar-mobile .navbar-mobile.hiden {
     transform: translateY(0);
     animation: hideMobileNav 1.5s 1s forwards;
+  }
+  @keyframes deployeMobileNav {
+    0% {
+      transform: translateY(100px);
+    }
+    100% {
+      transform: translateY(0);
+    }
   }
 }
 //ANIMATIONS KEYFRAMES

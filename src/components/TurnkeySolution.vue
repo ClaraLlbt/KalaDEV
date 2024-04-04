@@ -169,8 +169,6 @@ export default {
 .work {
   overflow: hidden;
   margin-top: 50px;
-  position: relative;
-  top: -200px;
   h2 {
     text-align: center;
     margin: 50px 0;
