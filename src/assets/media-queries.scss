@@ -1,6 +1,12 @@
 /******* MOBILE *******/
 @media screen and (max-width: 768px) {
   /* Styles pour les écrans de 768px de largeur ou moins */
+  #app .rotate-center {
+    animation: loaderMobile 1.5s ease-in-out infinite forwards;
+  }
+  #navbar-mobile.navbar {
+    top: 0;
+  }
   .banner-ctr {
     margin-top: 0 !important;
     .titles {
@@ -17,8 +23,8 @@
         }
       }
     }
-    .solutions {
-      top: -64px !important;
+    .options {
+      top: -61px !important;
       .turnkey,
       .bespoke {
         span {
@@ -57,13 +63,13 @@
       .turnkey {
         height: 400px;
         .hex {
-          clip-path: polygon(50% 0%, 225% 50%, 50% 156%, -244% 0%);
+          clip-path: polygon(48% 0%, 200% 46%, 0% 150%, 0% 0%);
         }
       }
       .bespoke {
         height: 400px;
         .hex {
-          clip-path: polygon(50% 0%, 421% 0%, 0% 132%, -48% 28%);
+          clip-path: polygon(50% 0%, 300% 0%, 0% 150%, -1% 16%);
         }
         span img {
           padding: 5px;
@@ -72,14 +78,35 @@
     }
   }
   .solutions {
+    .turnkey-ctr .cln-l,
+    .turnkey-ctr .cln-r {
+      padding: 0;
+    }
     .turnkey-ctr .cln-l .card,
     .turnkey-ctr .cln-r .card {
       float: initial !important;
+    }
+    .turnkey-ctr {
+      .txt .btn {
+        left: -10px;
+      }
     }
     .bespoke-ctr {
       height: auto !important;
       display: flex;
       flex-direction: column-reverse;
+      .txt {
+        span {
+          display: flex;
+          flex-direction: column;
+        }
+        .btn {
+          margin: auto;
+          a {
+            font-size: 17px;
+          }
+        }
+      }
     }
   }
   .contact {
@@ -113,6 +140,21 @@
         left: 0px !important;
         width: 100% !important;
       }
+    }
+  }
+  .contact .bckgd {
+    bottom: 0 !important;
+    left: 0px !important;
+    width: 100% !important;
+  }
+  /* Mobile Animations */
+  @keyframes loaderMobile {
+    0% {
+      transform: rotate(0);
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(360deg);
     }
   }
 }

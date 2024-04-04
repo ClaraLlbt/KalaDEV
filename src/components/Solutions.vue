@@ -51,7 +51,7 @@ export default {
 </script>
 
 <template>
-  <div class="container solutions">
+  <div id="turnkey" class="container solutions">
     <div id="turnkey-ctr" class="row turnkey-ctr">
       <div class="col-12 col-md-5 txt">
         <h2 class="h2-work">Solution immédiate</h2>
@@ -172,7 +172,7 @@ export default {
           </div>
         </div>
       </div>
-      <div class="col-12 col-md-7 txt">
+      <div id="bespoke" class="col-12 col-md-7 txt">
         <h2 class="h2-work">Solution Sur-mesure</h2>
         <span>
           <p>
@@ -211,10 +211,10 @@ export default {
         font-weight: 900;
       }
       p {
-        font-size: x-large;
+        font-size: 23px;
       }
       span p {
-        font-size: medium;
+        font-size: 18px;
       }
     }
   }

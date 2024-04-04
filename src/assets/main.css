@@ -29,6 +29,58 @@ i,
   color: tan;
 }
 
+/* BTN EFFECT ANIM */
+.nav * {
+  box-sizing: border-box;
+  transition: all 0.35s ease;
+}
+.nav li,
+button {
+  color: black;
+  position: relative;
+  text-decoration: none;
+}
+.nav li a {
+  color: black;
+}
+.nav li a:hover {
+  color: black;
+}
+.btn-effect::before,
+.btn-effect::after {
+  content: '';
+  height: 14px;
+  width: 14px;
+  position: absolute;
+  transition: all 0.35s ease;
+  opacity: 0;
+}
+.btn-effect::before {
+  content: '';
+  right: 0;
+  top: 0;
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+  transform: translate(-100%, 50%);
+}
+.btn-effect::after {
+  content: '';
+  left: 0;
+  bottom: 0;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  transform: translate(100%, -50%);
+}
+
+.nav li:hover:before,
+.nav li:hover:after,
+.btn-effect:hover::before,
+.btn-effect:hover::after {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+/* HEXAGON FORM */
 .hex-content {
   position: relative;
   padding-top: 29%;
@@ -45,7 +97,54 @@ i,
   background: gray;
 }
 
-@media (hover: hover) {
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #222831;
+    --color-text: #adb5bd;
+  }
+  .btn {
+    --bs-btn-color: #adb5bd;
+  }
+  .btn-effect::before {
+    border-top: 2px solid #adb5bd;
+    border-right: 2px solid #adb5bd;
+  }
+  .btn-effect::after {
+    border-bottom: 2px solid #adb5bd;
+    border-left: 2px solid #adb5bd;
+  }
+  .banner-ctr .titles .hex-content span {
+    color: black;
+  }
+  .nav li a {
+    color: white;
+  }
+  .nav li a:hover {
+    color: #adb5bd;
+  }
+  .navbar .nav .nav-item .btn.dropdown-toggle {
+    color: white;
+  }
+  a,
+  .nav-link {
+    color: white;
+  }
+  .solutions .bespoke-ctr .txt .btn a {
+    color: black;
+  }
+  .mess-icon img {
+    background: linear-gradient(
+      to bottom,
+      #cfc09f -87%,
+      #634f30 -71%,
+      #cfc09f -3%,
+      #ffecb3 31%,
+      #3a2c0f 144%
+    );
+    border-radius: 50%;
+    padding: 10px;
+    margin: 20px;
+  }
 }
 
 @media (min-width: 1024px) {

@@ -210,7 +210,6 @@ export default {
 <style lang="scss">
 .contact {
   position: relative;
-  width: 100vw;
   .contact-row {
     padding: 40px 0;
     align-items: center;

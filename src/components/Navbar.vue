@@ -17,28 +17,9 @@ export default {
         navBlur.classList.add('blur')
       }
     })
-    this.navHidden()
     if (window.matchMedia('(max-width: 768px)').matches) {
       /* La largeur minimum de l'affichage est 600 px inclus */
       this.mobileFormat = true
-      this.navHidden()
-    }
-  },
-  methods: {
-    navHidden() {
-      const el = document.querySelector('.contact')
-      const mobileNav = document.getElementsByClassName('navbar-mobile')
-      document.addEventListener('scroll', () => {
-        const { scrollTop, scrollHeight, clientHeight } = document.documentElement
-        const topElementToTopViewport = el.getBoundingClientRect(scrollHeight).top
-
-        if (scrollTop > (scrollTop + topElementToTopViewport).toFixed() - clientHeight * 0.1) {
-          mobileNav[0].classList.add('hiden')
-        }
-        if (scrollTop > (scrollTop - topElementToTopViewport).toFixed() - clientHeight * 0.1) {
-          mobileNav[0].classList.remove('hiden')
-        }
-      })
     }
   }
 }
@@ -48,11 +29,14 @@ export default {
   <!-- IF MOBILE FORMAT IS NOT DETECTED, SHOW THIS NAV -->
   <div v-if="mobileFormat == false" class="container-fluid navbar">
     <a class="navbar-brand" href="#">
-      <img src="../assets/kaladev-logo.svg" width="150" height="150" alt="" />
+      <img src="../assets/kaladev-logo.svg" width="120" height="120" alt="" />
     </a>
     <ul class="nav justify-content-center">
       <li class="nav-item btn-effect">
         <a class="nav-link" aria-current="page" href="#">HOME</a>
+      </li>
+      <li class="nav-item btn-effect">
+        <a class="nav-link" aria-current="page" href="#about">À PROPOS</a>
       </li>
       <li class="nav-item btn-group btn-effect" role="group">
         <button
@@ -75,28 +59,59 @@ export default {
   </div>
 
   <!-- IF MOBILE FORMAT IS DETECTED, SHOW THIS MOBILE NAV -->
-  <div
-    id="navbar-mobile"
-    v-else-if="mobileFormat == true"
-    class="container-fluid navbar navbar-mobile"
-  >
-    <ul class="nav justify-content-center">
-      <li class="nav-item mobile-item">
-        <a class="nav-link active" aria-current="page" href="#"
-          ><i class="bi bi-house-door-fill"></i
-        ></a>
-      </li>
-      <li class="nav-item mobile-item">
-        <a class="nav-link" href="#aboutthebee"><i class="bi bi-gear"></i></a>
-      </li>
+  <div id="navbar-mobile" v-else-if="mobileFormat == true" class="container-fluid navbar">
+    <button
+      class="btn btn-offcanvas"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasRight"
+      aria-controls="offcanvasRight"
+    >
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAYAAACoPemuAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAl0lEQVR4nO3UMQ6CQBCF4b+hMFTcQ0tbKm/BFTDacQctqbyQUhhv4FVYYzItJsDMNr4v+dudVy2IiLgogSqocumoFhiBFNRoN2a7Bo5K1mXJsAKogUNQtd0QEfHUAAPwzNxgtyc9Mvz2aaL7r2F7oAdumevttohIlA1wBLqVtfaWm7PjD3/yHLYDXsB7Zd83tp7DROTvfQBRgq7kD3VlFgAAAABJRU5ErkJggg=="
+      />
+    </button>
 
-      <li class="nav-item mobile-item">
-        <a class="nav-link" href="#work"><i class="bi bi-code-slash"></i></a>
-      </li>
-      <li class="nav-item mobile-item">
-        <a class="nav-link" href="#contact"><i class="bi bi-envelope-at-fill"></i></a>
-      </li>
-    </ul>
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="offcanvasRight"
+      aria-labelledby="offcanvasRightLabel"
+    >
+      <div class="offcanvas-header">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#">HOME</a>
+          </li>
+          <li class="nav-item btn-effect">
+            <a class="nav-link" aria-current="page" href="#about">À PROPOS</a>
+          </li>
+          <li class="nav-item li-group" role="group">
+            <ul class="intern">
+              <li class="nav-item">SERVICES</li>
+              <hr />
+              <li class="item nav-item">
+                <a class="dropdown-item" href="#turnkey-ctr">Solution "Clé en main"</a>
+              </li>
+              <li class="item nav-item">
+                <a class="dropdown-item" href="#bespoke-ctr">Solution Sur-mesure</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">CONTACT</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -106,9 +121,10 @@ export default {
   animation: deployeNav 1s 0.5s forwards;
   position: fixed;
   z-index: 1;
+  top: 10px;
   .navbar-brand {
     position: fixed;
-    top: 0;
+    top: -15px;
     left: 0;
   }
   .nav {
@@ -154,107 +170,63 @@ export default {
   }
 }
 
-/* Navbar Animations*/
-.nav * {
-  box-sizing: border-box;
-  transition: all 0.35s ease;
-}
-.nav li,
-button {
-  color: black;
-  position: relative;
-  text-decoration: none;
-}
-.nav li a {
-  color: black;
-}
-.nav li a:hover {
-  color: black;
-}
-.btn-effect::before,
-.btn-effect::after {
-  content: '';
-  height: 14px;
-  width: 14px;
-  position: absolute;
-  transition: all 0.35s ease;
-  opacity: 0;
-}
-.btn-effect::before {
-  content: '';
-  right: 0;
-  top: 0;
-  border-top: 2px solid black;
-  border-right: 2px solid black;
-  transform: translate(-100%, 50%);
-}
-.btn-effect::after {
-  content: '';
-  left: 0;
-  bottom: 0;
-  border-bottom: 2px solid black;
-  border-left: 2px solid black;
-  transform: translate(100%, -50%);
-}
+//MOBILE NAV
+#navbar-mobile {
+  justify-content: flex-end;
+  z-index: 3;
+  transform: translateY(0px);
+  animation: none;
+  .btn-offcanvas {
+    right: 5%;
+    top: 10px;
 
-.nav li:hover:before,
-.nav li:hover:after,
-.btn-effect:hover::before,
-.btn-effect:hover::after {
-  transform: translate(0, 0);
-  opacity: 1;
-}
-@media screen and (max-width: 767px) {
-  .navbar-mobile {
-    position: fixed;
-    bottom: 15px;
-    z-index: 1;
-    transform: translateY(100px);
-    animation: deployeMobileNav 1.5s 1s forwards;
-    box-shadow: inset -1px -4px 20px lightgray;
-    background: white;
-    width: 70%;
-    left: 0;
-    right: 0;
-    border-radius: 15px;
-    .nav {
+    img {
+      position: relative;
+      z-index: 2;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      .nav-item.mobile-item {
-        margin: auto;
-        a {
+      height: 100%;
+      backdrop-filter: blur(101px);
+      z-index: 1;
+    }
+    &:focus,
+    &:active {
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  .offcanvas {
+    height: 100vh;
+    width: 75%;
+    .offcanvas-body .nav {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-start !important;
+      .li-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        ul.intern {
           padding: 0;
-          // i{
-          //   color: grey;
-          //   &::before{
-          //   background: none;
-          //   -webkit-text-fill-color: initial;
-          // }}
+          margin: 0;
+          text-align: right;
+          .item {
+            font-size: medium;
+          }
         }
       }
-      // .item-dark .btn i::before{
-      //   background: none;
-      //   -webkit-text-fill-color: initial;
-      //   color: grey;
-      // }
-    }
-    .nav .nav-item.mobile-item::after,
-    .nav .nav-item.mobile-item::before {
-      content: none;
-    }
-  }
-  .navbar-mobile .navbar-mobile.hiden {
-    transform: translateY(0);
-    animation: hideMobileNav 1.5s 1s forwards;
-  }
-  @keyframes deployeMobileNav {
-    0% {
-      transform: translateY(100px);
-    }
-    100% {
-      transform: translateY(0);
     }
   }
 }
+
 //ANIMATIONS KEYFRAMES
 
 @keyframes deployeNav {
@@ -263,15 +235,6 @@ button {
   }
   100% {
     transform: translateY(0);
-  }
-}
-
-@keyframes hideMobileNav {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(100px);
   }
 }
 </style>
